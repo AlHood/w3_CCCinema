@@ -46,19 +46,35 @@ sql = "UPDATE customers SET (name, funds) = ('#{@name}', #{@funds}) WHERE id = #
   end
 
 
+
+
+
+def buy_ticket(film_title)
+sql = "SELECT FROM films WHERE title = #{film_title} RETURNING id;"
+
+local_film_id = SqlRunner.run
+# mmm, haow to ticket.new without a static name
+new_ticket = Ticket.new(@id, local_film_id)
+new_ticket.save
+
+sql = "SELECT FROM films WHERE title =  #{film_title} RETURNING price;"
+@funds -= price
+@customer.update
 end
 
-# # def buy_ticket(film)
+end
+
+# def buy_ticket(film) 
 # ticket.new (customer, film)
-
-
 # adjust funds by film.price
 # update customer
-
 # end
 
-# def ticket_count()
-# end
+# # def ticket_count()
+# search tickets for matching customer id
+# return as array with .map
+# .count them
+# # end
 
 
 

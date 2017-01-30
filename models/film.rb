@@ -45,6 +45,10 @@ def self.delete_all
   SqlRunner.run(sql)
 end
 
+# def return_id_by_title(title)
+
+# end
+
 # def customer_count
 #count the number of tickets with this films id
 # end
